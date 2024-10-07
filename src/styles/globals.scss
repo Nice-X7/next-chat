@@ -1,0 +1,32 @@
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.sidebar {
+  padding: 8px 24px 0 24px;
+  cursor: pointer;
+  color: #64748b;
+  list-style: none;
+  &:hover {
+      background-color: #ecf2ff;
+      border-radius: 30px;
+      color: #2475ff;
+  }
+}
+.active {
+  padding: 0 24px 0 24px;
+  border-radius: 30px;
+  color: #2475ff;
+  background-color: #ecf2ff;
+}
+.link {
+  color: #2475ff;
+  text-decoration: none;
+}
