@@ -16,14 +16,17 @@ body {
   list-style: none;
   &:hover {
       background-color: #ecf2ff;
+      background-color: #eeeeee;
       border-radius: 30px;
       color: #2475ff;
+      list-style: none;
   }
 }
 .active {
-  padding: 0 24px 0 24px;
+  padding: 8px 24px 0 24px;
   border-radius: 30px;
   color: #2475ff;
+  list-style: none;
   background-color: #ecf2ff;
 }
 .link {

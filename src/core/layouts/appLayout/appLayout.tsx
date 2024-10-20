@@ -33,16 +33,18 @@ export function AppLayout({ children }: { children: ReactNode }) {
           {contacts.map((x) => {
             return (
               <List key={x.id}>
-                <List.Item className={
-                  path === x.link ? 'active' : 'sidebar'
-                }>
-                  <Link href={x.link} className='link'>
+                <Link href={x.link} className='link'>
+                  <List.Item className={
+                    path === x.link ? 'active' : 'sidebar'
+                  }
+                    h={40}
+                  >
                     <Flex gap='md'>
                       <IconAddressBook />
                       <Text>{x.firstname} {x.lastname}</Text>
                     </Flex>
-                  </Link>
-                </List.Item>
+                  </List.Item>
+                </Link>
               </List>
             )
           })}
