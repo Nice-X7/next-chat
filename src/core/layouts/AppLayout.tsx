@@ -1,5 +1,5 @@
 import { usersQueries } from '@/entities/users';
-import { AppShell, Burger, Group, List, Loader } from '@mantine/core';
+import { AppShell, Burger, Button, Group, List, Loader } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { ReactNode } from 'react';
@@ -35,9 +35,11 @@ export function AppLayout({ children }: { children: ReactNode }) {
                             return <List.Item key={x.id} mb='md'>
                                 {
                                     x.role === 'user' ?
+                                    <Button w={270}>
                                         <Link href={`/user/${x.id}`} className='link_user'>
                                             {x.username}
-                                        </Link> : null
+                                        </Link> 
+                                    </Button> : null
                                 }
                             </List.Item>
                         })

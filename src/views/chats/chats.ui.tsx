@@ -3,7 +3,6 @@
 import { messagesQueries } from "@/entities/messages";
 import { usersQueries } from "@/entities/users";
 import {
-    Box,
     Button,
     Flex,
     Input,
