@@ -8,21 +8,21 @@ export type MessagesType = {
 
 export const messages: MessagesType[] = [
     {
-        id: 1,
+        id: 0,
         userId: 1,
         role: 'user',
         message: 'Hello! How are you?',
         dispatchTime: ''
     },
     {
-        id: 2,
+        id: 1,
         userId: 2,
         role: 'user',
         message: 'Good morning! Can you check my project?',
         dispatchTime: ''
     },
     {
-        id: 3,
+        id: 2,
         userId: 3,
         role: 'user',
         message: 'Hi! I want to go for a walk, are you with me?',

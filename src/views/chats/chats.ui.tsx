@@ -43,21 +43,33 @@ export function ChatsViews(): ReactNode {
     const userIdFromPath = Number(path.split("/").pop());
     const user = users.data.find((x) => x.id === userIdFromPath);
 
-    const handleSendMessage = () => {
+    const handleSendMessage = async () => {
         if (currentMessage) {
-            setMessageList([
-                ...messageList,
-                {
-                    id: Date.now(),
-                    userId: userIdFromPath,
-                    role: "admin",
-                    message: currentMessage,
-                    dispatchTime: new Date().toLocaleTimeString(),
-                },
-            ]);
-            setCurrentMessage("");
+          try {
+            const response = await fetch("/api/messages", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                role: "admin",
+                userId: userIdFromPath,
+                message: currentMessage,
+              }),
+            });
+    
+            if (response.ok) {
+              const newMessage: MessagesType = await response.json();
+              setMessageList((prevList) => [...prevList, newMessage]);
+              setCurrentMessage("");
+            } else {
+              console.error("Failed to send message:", response.statusText);
+            }
+          } catch (error) {
+            console.error("Error sending message:", error);
+          }
         }
-    };
+      };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
@@ -75,10 +87,10 @@ export function ChatsViews(): ReactNode {
                     <ScrollArea h="auto">
                         {messageList
                             .filter((x) => x.userId === userIdFromPath)
-                            .map((x) => (
+                            .map((x, index) => (
                                 <Paper
                                     p="lg"
-                                    key={x.id}
+                                    key={index}
                                     bg={x.role === "admin" ? "#399bae" : "#228be6"}
                                     ml={x.role === "admin" ? "auto" : "flex-start"}
                                     maw="40%"
