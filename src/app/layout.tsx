@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import "@/styles/globals.scss";
-import '@mantine/core/styles.css'
 import { ClientProvider } from "@/core/providers/ClientProvider";
+import type { Metadata } from "next";
+import '@mantine/core/styles.css'
+import "@/styles/globals.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
